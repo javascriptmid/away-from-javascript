@@ -1,8 +1,7 @@
 const _ = require(`lodash`);
 const Promise = require(`bluebird`);
 const path = require(`path`);
-const URL = require("url-parse");
-const slugify = require("slugify");
+const slugify = require('slugify');
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
@@ -36,8 +35,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           path: slugify(edge.node.title, { lower: true }),
           component: postTemplate,
           context: {
-            guid: edge.node.guid
-          }
+            guid: edge.node.guid,
+          },
         });
       });
     });

@@ -2,11 +2,14 @@ const request = require('request');
 const parsePodcast = require('node-podcast-parser');
 const crypto = require('crypto');
 
-const createContentDigest = obj => crypto.createHash('md5').update(JSON.stringify(obj)).digest('hex');
+const createContentDigest = obj =>
+  crypto
+    .createHash('md5')
+    .update(JSON.stringify(obj))
+    .digest('hex');
 
 function promisifiedParseURL(url) {
   return new Promise((resolve, reject) => {
-
     request(url, (err, res, data) => {
       if (err) {
         reject(err);
@@ -21,15 +24,13 @@ function promisifiedParseURL(url) {
         resolve(data);
       });
     });
-
   });
 }
 
 const createChildren = (episodes, parentId, createNode) => {
   const childIds = [];
-  episodes.forEach((episode) => {
+  episodes.forEach(episode => {
     childIds.push(episode.guid);
-    //console.log(episode);
     const node = Object.assign({}, episode, {
       id: episode.guid,
       title: episode.title,
@@ -56,7 +57,8 @@ async function sourceNodes({ boundActionCreators }, { feedURL }) {
     return;
   }
 
-  const { categories, title, link, description, language, image, episodes } = data;
+  // const { categories, title, link, description, language, image, episodes } = data;
+  const { title, link, description, episodes } = data;
   //console.log(episodes);
   const childrenIds = createChildren(episodes, link, createNode);
   const feed = {
@@ -68,7 +70,10 @@ async function sourceNodes({ boundActionCreators }, { feedURL }) {
     children: childrenIds,
   };
 
-  feed.internal = { type: 'podcastFeed', contentDigest: createContentDigest(feed) };
+  feed.internal = {
+    type: 'podcastFeed',
+    contentDigest: createContentDigest(feed),
+  };
 
   createNode(feed);
 }

@@ -1,35 +1,43 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import Helmet from 'react-helmet'
-import URL from 'url-parse'
-import linkifyHtml from 'linkifyjs/html'
-import slugify from 'slugify'
+import React from 'react';
+import Link from 'gatsby-link';
+import Helmet from 'react-helmet';
+import linkifyHtml from 'linkifyjs/html';
+import slugify from 'slugify';
 
 const IndexPage = ({ data }) => {
-  const posts = data.allPodcastFeedItem.edges
+  const posts = data.allPodcastFeedItem.edges;
 
   return (
     <main>
-    <Helmet>
-      <title>{data.site.siteMetadata.title}</title>
-    </Helmet>
+      <Helmet>
+        <title>{data.site.siteMetadata.title}</title>
+      </Helmet>
       {posts.map(post => (
         <article key={post.node.guid}>
-
-          <Link className="post__title-link" to={ slugify(post.node.title, {lower: true}) }><h2>{post.node.title}</h2></Link>
+          <Link
+            className="post__title-link"
+            to={slugify(post.node.title, { lower: true })}
+          >
+            <h2>{post.node.title}</h2>
+          </Link>
           <p>{post.node.publised}</p>
-          <div dangerouslySetInnerHTML={{ __html: linkifyHtml(post.node.description).replace(/(?:\r\n|\r|\n)/g, '<br />') }} />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: linkifyHtml(post.node.description).replace(
+                /(?:\r\n|\r|\n)/g,
+                '<br />'
+              ),
+            }}
+          />
         </article>
       ))}
     </main>
-  )
-}
+  );
+};
 
-IndexPage.propTypes
+export default IndexPage;
 
-export default IndexPage
-
-export const pageQuery = graphql`
+export const pageQuery = global.graphql`
   query IndexQuery {
     site {
       siteMetadata {
@@ -39,12 +47,12 @@ export const pageQuery = graphql`
     allPodcastFeedItem {
       edges {
         node {
-          guid,
-          title,
-          description,
+          guid
+          title
+          description
           published(formatString: "DD/MM/YYYY")
         }
       }
     }
   }
-`
+`;
