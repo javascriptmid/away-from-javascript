@@ -37,7 +37,7 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage;
 
-export const pageQuery = global.graphql`
+export const pageQuery = graphql`
   query IndexQuery {
     site {
       siteMetadata {

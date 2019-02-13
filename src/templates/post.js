@@ -39,7 +39,7 @@ PostTemplate.propTypes = {
 
 export default PostTemplate;
 
-export const pageQuery = global.graphql`
+export const pageQuery = graphql`
   query currentPostQuery($guid: String!) {
     allPodcastFeedItem(limit: 1, filter: { guid: { eq: $guid } }) {
       edges {
