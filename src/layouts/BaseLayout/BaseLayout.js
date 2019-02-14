@@ -16,6 +16,10 @@ const TemplateWrapper = ({ children }) => (
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
+      <meta
+        name="google-site-verification"
+        content="hBKd1L9FnkX5cAEYpx9nduhBRIDvwQo7NHy-5JMQVkU"
+      />
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"
