@@ -1,45 +1,52 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import linkifyHtml from 'linkifyjs/html';
 import ReactAudioPlayer from 'react-audio-player';
 
+import { ThemeConsumer } from '../components/ThemeProvider';
 import BaseLayout from '../layouts/BaseLayout';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Col from '../components/Col';
+import Page from '../components/Page';
 
 class PostTemplate extends Component {
   render() {
     const post = this.props.data.allPodcastFeedItem;
 
-    // let playlist = [{ src: post.edges[0].node.enclosure.url }];
-    // let songs = [{ url: post.edges[0].node.enclosure.url }];
-
     return (
       <BaseLayout>
-        <div>
-          <h1 dangerouslySetInnerHTML={{ __html: post.edges[0].node.title }} />
-          <ReactAudioPlayer
-            src={post.edges[0].node.enclosure.url}
-            autoPlay={false}
-            controls
-          />
+        <ThemeConsumer>
+          {theme => (
+            <Page>
+              <Grid>
+                <Row>
+                  <Col xs>
+                    <div>
+                      <h1>{post.edges[0].node.title}</h1>
 
-          <div
-            dangerouslySetInnerHTML={{
-              __html: linkifyHtml(post.edges[0].node.description).replace(
-                /(?:\r\n|\r|\n)/g,
-                '<br />'
-              ),
-            }}
-          />
-        </div>
+                      <ReactAudioPlayer
+                        style={{
+                          width: '100%',
+                          marginTop: 12,
+                          marginBottom: 12,
+                        }}
+                        src={post.edges[0].node.enclosure.url}
+                        autoPlay={false}
+                        controls
+                      />
+
+                      <p>{post.edges[0].node.description}</p>
+                    </div>
+                  </Col>
+                </Row>
+              </Grid>
+            </Page>
+          )}
+        </ThemeConsumer>
       </BaseLayout>
     );
   }
 }
-
-PostTemplate.propTypes = {
-  data: PropTypes.object.isRequired,
-  edges: PropTypes.array,
-};
 
 export default PostTemplate;
 
@@ -52,6 +59,7 @@ export const pageQuery = graphql`
           title
           description
           published(formatString: "DD/MM/YYYY")
+          duration
           enclosure {
             url
             filesize

@@ -9,7 +9,7 @@ import Col from '../components/Col';
 import Page from '../components/Page';
 
 const IndexPage = ({ data }) => {
-  const posts = data.allPodcastFeedItem.edges;
+  const [headerPost, ...posts] = data.allPodcastFeedItem.edges;
 
   return (
     <BaseLayout>
@@ -18,10 +18,10 @@ const IndexPage = ({ data }) => {
           <Row>
             <Col xs>
               <HeroPost
-                published={posts[0].node.published}
-                image={posts[0].node.image}
-                title={posts[0].node.title}
-                description={posts[0].node.description}
+                published={headerPost.node.published}
+                image={headerPost.node.image}
+                title={headerPost.node.title}
+                description={headerPost.node.description}
               />
             </Col>
           </Row>
