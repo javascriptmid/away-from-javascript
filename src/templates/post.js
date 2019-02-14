@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import linkifyHtml from 'linkifyjs/html';
 import ReactAudioPlayer from 'react-audio-player';
 
 import { ThemeConsumer } from '../components/ThemeProvider';
 import BaseLayout from '../layouts/BaseLayout';
-import Post from '../components/Post';
+import HeroPost from '../components/HeroPost';
 import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Col from '../components/Col';
@@ -22,7 +21,7 @@ class PostTemplate extends Component {
               <Grid>
                 <Row>
                   <Col xs>
-                    <Post
+                    <HeroPost
                       published={post.edges[0].node.published}
                       image={post.edges[0].node.image}
                       title={post.edges[0].node.title}

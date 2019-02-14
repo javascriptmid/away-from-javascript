@@ -8,7 +8,7 @@ export default function Page({ children }) {
   return (
     <ThemeConsumer>
       {theme => (
-        <div style={{ backgroundColor: theme.Light }} className={styles.Page}>
+        <div style={{ backgroundColor: theme.Lighter }} className={styles.Page}>
           {children}
         </div>
       )}

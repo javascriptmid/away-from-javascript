@@ -11,13 +11,13 @@ export function HeaderLink(props) {
   return (
     <ThemeConsumer>
       {theme => (
-        <Link
+        <a
           {...props}
           style={{ color: theme.Blue }}
           className={styles.HeaderLink}
         >
           {props.children}
-        </Link>
+        </a>
       )}
     </ThemeConsumer>
   );
@@ -45,8 +45,10 @@ export default function Header() {
               </div>
             </Link>
             <nav>
-              <HeaderLink>RSS</HeaderLink>
-              <HeaderLink>iTunes</HeaderLink>
+              <HeaderLink href="https://rss.simplecast.com/podcasts/10278/rss">
+                RSS
+              </HeaderLink>
+              {/* <HeaderLink href="">iTunes</HeaderLink> */}
             </nav>
           </div>
         </header>
