@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 import ReactAudioPlayer from 'react-audio-player';
 
 import { ThemeConsumer } from '../components/ThemeProvider';

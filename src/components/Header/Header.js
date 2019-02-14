@@ -48,6 +48,9 @@ export default function Header() {
               <HeaderLink href="https://rss.simplecast.com/podcasts/10278/rss">
                 RSS
               </HeaderLink>
+              <HeaderLink href="https://open.spotify.com/show/2lFTjo5kc498PWOOg0fvum?si=4g0U4s43SSqu8ifdaKFR3A">
+                Spotify
+              </HeaderLink>
               {/* <HeaderLink href="">iTunes</HeaderLink> */}
             </nav>
           </div>

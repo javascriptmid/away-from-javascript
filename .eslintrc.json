@@ -1,6 +1,3 @@
 {
-  "extends": ["react-app", "prettier"],
-  "globals": {
-    "graphql": "readable"
-  }
+  "extends": ["react-app", "prettier"]
 }
