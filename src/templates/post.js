@@ -4,6 +4,7 @@ import ReactAudioPlayer from 'react-audio-player';
 
 import { ThemeConsumer } from '../components/ThemeProvider';
 import BaseLayout from '../layouts/BaseLayout';
+import Post from '../components/Post';
 import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Col from '../components/Col';
@@ -21,22 +22,23 @@ class PostTemplate extends Component {
               <Grid>
                 <Row>
                   <Col xs>
-                    <div>
-                      <h1>{post.edges[0].node.title}</h1>
+                    <Post
+                      published={post.edges[0].node.published}
+                      image={post.edges[0].node.image}
+                      title={post.edges[0].node.title}
+                      description={post.edges[0].node.description}
+                    />
 
-                      <ReactAudioPlayer
-                        style={{
-                          width: '100%',
-                          marginTop: 12,
-                          marginBottom: 12,
-                        }}
-                        src={post.edges[0].node.enclosure.url}
-                        autoPlay={false}
-                        controls
-                      />
-
-                      <p>{post.edges[0].node.description}</p>
-                    </div>
+                    <ReactAudioPlayer
+                      style={{
+                        width: '100%',
+                        marginTop: 12,
+                        marginBottom: 12,
+                      }}
+                      src={post.edges[0].node.enclosure.url}
+                      autoPlay={false}
+                      controls
+                    />
                   </Col>
                 </Row>
               </Grid>
@@ -57,6 +59,7 @@ export const pageQuery = graphql`
         node {
           guid
           title
+          image
           description
           published(formatString: "DD/MM/YYYY")
           duration
