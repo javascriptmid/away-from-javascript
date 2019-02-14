@@ -1,0 +1,17 @@
+.Post {
+  margin-bottom: 24px;
+}
+
+.PostTitle {
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
+
+.PostImage {
+  object-fit: contain;
+  max-width: 100%;
+}
+
+.PostContent {
+  padding: 24px 12px;
+}

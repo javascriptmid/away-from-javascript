@@ -1,37 +1,45 @@
 import React from 'react';
-import Link from 'gatsby-link';
-import Helmet from 'react-helmet';
-import linkifyHtml from 'linkifyjs/html';
-import slugify from 'slugify';
+
+import BaseLayout from '../layouts/BaseLayout';
+import Post from '../components/Post';
+import HeroPost from '../components/HeroPost';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Col from '../components/Col';
+import Page from '../components/Page';
 
 const IndexPage = ({ data }) => {
   const posts = data.allPodcastFeedItem.edges;
 
   return (
-    <main>
-      <Helmet>
-        <title>{data.site.siteMetadata.title}</title>
-      </Helmet>
-      {posts.map(post => (
-        <article key={post.node.guid}>
-          <Link
-            className="post__title-link"
-            to={slugify(post.node.title, { lower: true })}
-          >
-            <h2>{post.node.title}</h2>
-          </Link>
-          <p>{post.node.publised}</p>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: linkifyHtml(post.node.description).replace(
-                /(?:\r\n|\r|\n)/g,
-                '<br />'
-              ),
-            }}
-          />
-        </article>
-      ))}
-    </main>
+    <BaseLayout>
+      <Page>
+        <Grid>
+          <Row>
+            <Col xs>
+              <HeroPost
+                published={posts[0].node.published}
+                image={posts[0].node.image}
+                title={posts[0].node.title}
+                description={posts[0].node.description}
+              />
+            </Col>
+          </Row>
+          <Row>
+            {posts.map(post => (
+              <Col xs>
+                <Post
+                  published={post.node.published}
+                  image={post.node.image}
+                  title={post.node.title}
+                  description={post.node.description}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Grid>
+      </Page>
+    </BaseLayout>
   );
 };
 
@@ -49,6 +57,7 @@ export const pageQuery = graphql`
         node {
           guid
           title
+          image
           description
           published(formatString: "DD/MM/YYYY")
         }

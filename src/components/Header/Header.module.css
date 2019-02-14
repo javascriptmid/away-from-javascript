@@ -1,0 +1,21 @@
+.Header {
+  display: flex;
+  padding: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.HeaderLogoGroup {
+  display: flex;
+  align-items: center;
+}
+
+.HeaderLink {
+  margin-left: 12px;
+}
+
+@media only screen and (min-width: 550px) {
+  .Header {
+    padding: 24px 54px;
+  }
+}

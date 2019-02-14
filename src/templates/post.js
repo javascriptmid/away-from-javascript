@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import linkifyHtml from 'linkifyjs/html';
 import ReactAudioPlayer from 'react-audio-player';
 
+import BaseLayout from '../layouts/BaseLayout';
+
 class PostTemplate extends Component {
   render() {
     const post = this.props.data.allPodcastFeedItem;
@@ -11,23 +13,25 @@ class PostTemplate extends Component {
     // let songs = [{ url: post.edges[0].node.enclosure.url }];
 
     return (
-      <div>
-        <h1 dangerouslySetInnerHTML={{ __html: post.edges[0].node.title }} />
-        <ReactAudioPlayer
-          src={post.edges[0].node.enclosure.url}
-          autoPlay={false}
-          controls
-        />
+      <BaseLayout>
+        <div>
+          <h1 dangerouslySetInnerHTML={{ __html: post.edges[0].node.title }} />
+          <ReactAudioPlayer
+            src={post.edges[0].node.enclosure.url}
+            autoPlay={false}
+            controls
+          />
 
-        <div
-          dangerouslySetInnerHTML={{
-            __html: linkifyHtml(post.edges[0].node.description).replace(
-              /(?:\r\n|\r|\n)/g,
-              '<br />'
-            ),
-          }}
-        />
-      </div>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: linkifyHtml(post.edges[0].node.description).replace(
+                /(?:\r\n|\r|\n)/g,
+                '<br />'
+              ),
+            }}
+          />
+        </div>
+      </BaseLayout>
     );
   }
 }
