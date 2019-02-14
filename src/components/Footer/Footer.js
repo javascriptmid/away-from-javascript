@@ -11,7 +11,8 @@ export default function Footer() {
       {theme => (
         <footer style={{ backgroundColor: theme.Darker }}>
           <div className={styles.Footer}>
-            <Link
+            <a
+              href="https://github.com/javascriptmid/away-from-javascript"
               style={{
                 textAlign: 'center',
                 textDecoration: 'none',
@@ -19,7 +20,7 @@ export default function Footer() {
               }}
             >
               Made with ♥ by the Javascript Mérida community
-            </Link>
+            </a>
           </div>
         </footer>
       )}
