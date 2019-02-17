@@ -51,6 +51,9 @@ export default function Header() {
               <HeaderLink href="https://open.spotify.com/show/2lFTjo5kc498PWOOg0fvum?si=4g0U4s43SSqu8ifdaKFR3A">
                 Spotify
               </HeaderLink>
+              <HeaderLink href="https://www.google.com/podcasts?feed=aHR0cHM6Ly9yc3Muc2ltcGxlY2FzdC5jb20vcG9kY2FzdHMvMTAyNzgvcnNz">
+                Google Podcast
+              </HeaderLink>
               {/* <HeaderLink href="">iTunes</HeaderLink> */}
             </nav>
           </div>
