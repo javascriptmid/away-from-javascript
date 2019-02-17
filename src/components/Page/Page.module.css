@@ -1,5 +1,5 @@
 .Page {
   display: flex;
-  min-height: calc(100vh - 112px);
+  min-height: calc(100vh - 118px);
   padding: 12px;
 }

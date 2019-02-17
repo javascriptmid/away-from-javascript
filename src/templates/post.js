@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import ReactAudioPlayer from 'react-audio-player';
 
@@ -10,46 +10,42 @@ import Row from '../components/Row';
 import Col from '../components/Col';
 import Page from '../components/Page';
 
-class PostTemplate extends Component {
-  render() {
-    const post = this.props.data.allPodcastFeedItem;
+export default function PostTemplate(props) {
+  const post = props.data.allPodcastFeedItem;
 
-    return (
-      <BaseLayout>
-        <ThemeConsumer>
-          {theme => (
-            <Page>
-              <Grid>
-                <Row>
-                  <Col xs>
-                    <ReactAudioPlayer
-                      style={{
-                        width: '100%',
-                        marginTop: 12,
-                        marginBottom: 12,
-                      }}
-                      src={post.edges[0].node.enclosure.url}
-                      autoPlay={false}
-                      controls
-                    />
-                    <Post
-                      published={post.edges[0].node.published}
-                      image={post.edges[0].node.image}
-                      title={post.edges[0].node.title}
-                      description={post.edges[0].node.description}
-                    />
-                  </Col>
-                </Row>
-              </Grid>
-            </Page>
-          )}
-        </ThemeConsumer>
-      </BaseLayout>
-    );
-  }
+  return (
+    <BaseLayout>
+      <ThemeConsumer>
+        {theme => (
+          <Page>
+            <Grid>
+              <Row>
+                <Col xs>
+                  <ReactAudioPlayer
+                    style={{
+                      width: '100%',
+                      marginTop: 12,
+                      marginBottom: 12,
+                    }}
+                    src={post.edges[0].node.enclosure.url}
+                    autoPlay={false}
+                    controls
+                  />
+                  <Post
+                    published={post.edges[0].node.published}
+                    image={post.edges[0].node.image}
+                    title={post.edges[0].node.title}
+                    description={post.edges[0].node.description}
+                  />
+                </Col>
+              </Row>
+            </Grid>
+          </Page>
+        )}
+      </ThemeConsumer>
+    </BaseLayout>
+  );
 }
-
-export default PostTemplate;
 
 export const pageQuery = graphql`
   query currentPostQuery($guid: String!) {
