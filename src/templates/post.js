@@ -4,7 +4,7 @@ import ReactAudioPlayer from 'react-audio-player';
 
 import { ThemeConsumer } from '../components/ThemeProvider';
 import BaseLayout from '../layouts/BaseLayout';
-import HeroPost from '../components/HeroPost';
+import Post from '../components/Post';
 import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Col from '../components/Col';
@@ -22,13 +22,6 @@ class PostTemplate extends Component {
               <Grid>
                 <Row>
                   <Col xs>
-                    <HeroPost
-                      published={post.edges[0].node.published}
-                      image={post.edges[0].node.image}
-                      title={post.edges[0].node.title}
-                      description={post.edges[0].node.description}
-                    />
-
                     <ReactAudioPlayer
                       style={{
                         width: '100%',
@@ -38,6 +31,12 @@ class PostTemplate extends Component {
                       src={post.edges[0].node.enclosure.url}
                       autoPlay={false}
                       controls
+                    />
+                    <Post
+                      published={post.edges[0].node.published}
+                      image={post.edges[0].node.image}
+                      title={post.edges[0].node.title}
+                      description={post.edges[0].node.description}
                     />
                   </Col>
                 </Row>
