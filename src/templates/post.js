@@ -11,10 +11,10 @@ import Col from '../components/Col';
 import Page from '../components/Page';
 
 export default function PostTemplate(props) {
-  const post = props.data.allPodcastFeedItem;
+  const post = props.data.allPodcastFeedItem.edges[0];
 
   return (
-    <BaseLayout>
+    <BaseLayout title={post.node.title} description={post.node.description}>
       <ThemeConsumer>
         {theme => (
           <Page>
@@ -27,15 +27,15 @@ export default function PostTemplate(props) {
                       marginTop: 12,
                       marginBottom: 12,
                     }}
-                    src={post.edges[0].node.enclosure.url}
+                    src={post.node.enclosure.url}
                     autoPlay={false}
                     controls
                   />
                   <Post
-                    published={post.edges[0].node.published}
-                    image={post.edges[0].node.image}
-                    title={post.edges[0].node.title}
-                    description={post.edges[0].node.description}
+                    published={post.node.published}
+                    image={post.node.image}
+                    title={post.node.title}
+                    description={post.node.description}
                   />
                 </Col>
               </Row>

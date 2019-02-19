@@ -10,9 +10,13 @@ import Page from '../components/Page';
 
 const IndexPage = ({ data }) => {
   const posts = data.allPodcastFeedItem.edges;
+  const firstPost = posts[0];
 
   return (
-    <BaseLayout>
+    <BaseLayout
+      title="Away from Javascript"
+      description={`Disfruta el capitulo mas reciente: ${firstPost.node.title}`}
+    >
       <Page>
         <Grid>
           <Row>

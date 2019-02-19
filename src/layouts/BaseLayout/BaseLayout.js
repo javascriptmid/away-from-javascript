@@ -7,12 +7,12 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ThemeProvider from '../../components/ThemeProvider';
 
-export default function TemplateWrapper({ children }) {
+export default function TemplateWrapper({ children, title, description }) {
   return (
     <div>
       <Helmet>
-        <title>Away from Javscript</title>
-        <meta name="description" content="Away from Javascript Podcast" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
