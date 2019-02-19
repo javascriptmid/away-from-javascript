@@ -8,6 +8,7 @@ import styles from './Post.module.css';
 import { ThemeConsumer } from '../ThemeProvider';
 import Row from '../Row';
 import Col from '../Col';
+import Image from '../Image';
 
 export default function Post({ image, title, description, published }) {
   return (
@@ -20,7 +21,7 @@ export default function Post({ image, title, description, published }) {
           <article className={styles.Post}>
             <Row>
               <Col xs={3}>
-                <img className={styles.PostImage} src={image} alt={title} />
+                <Image className={styles.PostImage} src={image} alt={title} />
               </Col>
               <Col xs>
                 <div>

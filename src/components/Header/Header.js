@@ -6,6 +6,7 @@ import LogoPNG from '../../assets/logo.png';
 import styles from './Header.module.css';
 
 import { ThemeConsumer } from '../ThemeProvider';
+import Image from '../Image';
 
 export function HeaderLink(props) {
   return (
@@ -34,7 +35,7 @@ export default function Header() {
               style={{ textDecoration: 'none', color: theme.Yellow }}
             >
               <div className={styles.HeaderLogoGroup}>
-                <img
+                <Image
                   style={{ maxHeight: 32 }}
                   src={LogoPNG}
                   alt="Javascript Mérida"

@@ -1,4 +1,4 @@
-const theme = {
+module.exports = {
   Yellow: '#FFE2A9',
   Darker: '#232830',
   Dark: '#65737E',
@@ -7,5 +7,3 @@ const theme = {
   Red: '#E15A60',
   Blue: '#6699CC',
 };
-
-export default theme;

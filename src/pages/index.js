@@ -8,7 +8,7 @@ import Row from '../components/Row';
 import Col from '../components/Col';
 import Page from '../components/Page';
 
-const IndexPage = ({ data }) => {
+function IndexPage({ data }) {
   const posts = data.allPodcastFeedItem.edges;
   const firstPost = posts[0];
 
@@ -21,7 +21,7 @@ const IndexPage = ({ data }) => {
         <Grid>
           <Row>
             {posts.map(post => (
-              <Col xs>
+              <Col xs key={post.node.id}>
                 <Post
                   published={post.node.published}
                   image={post.node.image}
@@ -35,7 +35,7 @@ const IndexPage = ({ data }) => {
       </Page>
     </BaseLayout>
   );
-};
+}
 
 export default IndexPage;
 
@@ -49,6 +49,7 @@ export const pageQuery = graphql`
     allPodcastFeedItem {
       edges {
         node {
+          id
           guid
           title
           image
