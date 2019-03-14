@@ -19,8 +19,8 @@ function IndexPage({ data }) {
     >
       <Page>
         <Grid>
-          <Row>
-            {posts.map(post => (
+          {posts.map(post => (
+            <Row>
               <Col xs key={post.node.id}>
                 <Post
                   published={post.node.published}
@@ -29,8 +29,8 @@ function IndexPage({ data }) {
                   description={post.node.description}
                 />
               </Col>
-            ))}
-          </Row>
+            </Row>
+          ))}
         </Grid>
       </Page>
     </BaseLayout>
