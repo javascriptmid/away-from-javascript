@@ -14,7 +14,12 @@ export default function PostTemplate(props) {
   const post = props.data.allPodcastFeedItem.edges[0];
 
   return (
-    <BaseLayout title={post.node.title} description={post.node.description}>
+    <BaseLayout
+      image={post.node.image}
+      audio={post.node.enclosure.url}
+      title={post.node.title}
+      description={post.node.description}
+    >
       <ThemeConsumer>
         {theme => (
           <Page>
