@@ -1,10 +1,5 @@
 .Header {
-  display: flex;
-  padding: 12px;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 76rem;
-  margin: auto;
+  padding: 48px 0px;
 }
 
 .HeaderLogoGroup {
@@ -13,5 +8,9 @@
 }
 
 .HeaderLink {
-  margin-left: 12px;
+  margin-bottom: 24px;
+}
+
+.HeaderExternalLink {
+  margin: 0px 12px;
 }

@@ -10,7 +10,7 @@ import Row from '../Row';
 import Col from '../Col';
 import Image from '../Image';
 
-export default function Post({ image, title, description, published }) {
+export default function Post({ ep, image, title, description, published }) {
   return (
     <ThemeConsumer>
       {theme => (
@@ -20,17 +20,16 @@ export default function Post({ image, title, description, published }) {
         >
           <article className={styles.Post}>
             <Row>
-              <Col xs={3}>
+              <Col xs={2}>
                 <Image className={styles.PostImage} src={image} alt={title} />
               </Col>
               <Col xs>
                 <div>
-                  <p style={{ color: theme.Dark }}>{published}</p>
                   <h2
                     className={`subtitle ${styles.PostTitle}`}
                     style={{ color: theme.Darker }}
                   >
-                    {title}
+                    {ep ? `${ep}: ${title}` : title}
                   </h2>
                   <div
                     style={{ color: theme.Dark }}

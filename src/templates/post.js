@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import ReactAudioPlayer from 'react-audio-player';
 
+import LogoPNG from '../assets/logo.png';
+
 import { ThemeConsumer } from '../components/ThemeProvider';
 import BaseLayout from '../layouts/BaseLayout';
 import Post from '../components/Post';
@@ -24,8 +26,8 @@ export default function PostTemplate(props) {
         {theme => (
           <Page>
             <Grid>
-              <Row>
-                <Col xs>
+              <Row center="xs">
+                <Col xs md={8}>
                   <ReactAudioPlayer
                     style={{
                       width: '100%',
@@ -38,7 +40,7 @@ export default function PostTemplate(props) {
                   />
                   <Post
                     published={post.node.published}
-                    image={post.node.image}
+                    image={LogoPNG}
                     title={post.node.title}
                     description={post.node.description}
                   />

@@ -1,11 +1,11 @@
 .Post {
   margin-bottom: 24px;
   padding: 24px 12px;
+  text-align: start;
 }
 
 .PostTitle {
   margin-bottom: 12px;
-  margin-top: 8px;
 }
 
 .PostImage {

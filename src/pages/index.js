@@ -1,6 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
+import LogoPNG from '../assets/logo.png';
+
 import BaseLayout from '../layouts/BaseLayout';
 import Post from '../components/Post';
 import Grid from '../components/Grid';
@@ -19,12 +21,13 @@ function IndexPage({ data }) {
     >
       <Page>
         <Grid>
-          {posts.map(post => (
-            <Row>
-              <Col xs key={post.node.id}>
+          {posts.map((post, index) => (
+            <Row center="xs">
+              <Col xs md={8} key={post.node.id}>
                 <Post
+                  ep={posts.length - index}
                   published={post.node.published}
-                  image={post.node.image}
+                  image={LogoPNG}
                   title={post.node.title}
                   description={post.node.description}
                 />
