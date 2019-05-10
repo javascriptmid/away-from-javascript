@@ -1,28 +1,13 @@
 import React from 'react';
 import Link from 'gatsby-link';
 
-import styles from './Header.module.css';
-
 import { ThemeConsumer } from '../ThemeProvider';
 import Grid from '../Grid';
 import Row from '../Row';
 import Col from '../Col';
 
-export function HeaderExternalLink(props) {
-  return (
-    <ThemeConsumer>
-      {theme => (
-        <a
-          {...props}
-          style={{ color: theme.Blue }}
-          className={styles.HeaderExternalLink}
-        >
-          {props.children}
-        </a>
-      )}
-    </ThemeConsumer>
-  );
-}
+import HeaderExternalLink from './HeaderExternalLink';
+import styles from './Header.module.css';
 
 export default function Header() {
   return (

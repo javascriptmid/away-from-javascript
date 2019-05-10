@@ -1,7 +1,8 @@
 import './index.css';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Helmet from 'react-helmet';
+import lozad from 'lozad';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -14,6 +15,11 @@ export default function TemplateWrapper({
   image,
   audio,
 }) {
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  });
+
   return (
     <div>
       <Helmet>

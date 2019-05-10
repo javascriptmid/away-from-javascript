@@ -1,22 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
-import ReactAudioPlayer from 'react-audio-player';
-import lozad from 'lozad';
 
 import { ThemeConsumer } from '../components/ThemeProvider';
-import BaseLayout from '../layouts/BaseLayout';
-import Post from '../components/Post';
-import Grid from '../components/Grid';
-import Row from '../components/Row';
-import Col from '../components/Col';
-import Page from '../components/Page';
+
+import {
+  BaseLayout,
+  Post,
+  Grid,
+  Row,
+  Col,
+  Page,
+  AudioPlayer,
+} from '../components';
 
 export default function PostTemplate(props) {
-  useEffect(() => {
-    const observer = lozad();
-    observer.observe();
-  });
-
   const post = props.data.allPodcastFeedItem.edges[0];
 
   return (
@@ -32,16 +29,13 @@ export default function PostTemplate(props) {
             <Grid>
               <Row center="xs">
                 <Col xs md={8}>
-                  <ReactAudioPlayer
-                    className="lozad"
+                  <AudioPlayer
                     style={{
                       width: '100%',
                       marginTop: 12,
                       marginBottom: 12,
                     }}
-                    data-src={post.node.enclosure.url}
-                    autoPlay={false}
-                    controls
+                    src={post.node.enclosure.url}
                   />
                   <Post
                     published={post.node.published}
