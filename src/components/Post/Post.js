@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'gatsby-link';
 import linkifyHtml from 'linkifyjs/html';
 import slugify from 'slugify';
+import lozad from 'lozad';
 
 import styles from './Post.module.css';
 
 import { ThemeConsumer } from '../ThemeProvider';
 import Row from '../Row';
 import Col from '../Col';
-import Image from '../Image';
 
 export default function Post({ ep, image, title, description, published }) {
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  });
+
   return (
     <ThemeConsumer>
       {theme => (
@@ -21,7 +26,11 @@ export default function Post({ ep, image, title, description, published }) {
           <article className={styles.Post}>
             <Row>
               <Col xs={2}>
-                <Image className={styles.PostImage} src={image} alt={title} />
+                <img
+                  className={`lozad ${styles.PostImage}`}
+                  data-src={image}
+                  alt={title}
+                />
               </Col>
               <Col xs>
                 <div>

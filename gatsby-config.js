@@ -32,7 +32,7 @@ module.exports = {
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         orientation: 'natural',
         display: 'standalone',
-        icon: 'src/assets/logo.png', // This path is relative to the root of the site.
+        icon: 'static/logo.png', // This path is relative to the root of the site.
       },
     },
     'gatsby-plugin-offline',

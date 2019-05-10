@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
 import ReactAudioPlayer from 'react-audio-player';
-
-import LogoPNG from '../assets/logo.png';
+import lozad from 'lozad';
 
 import { ThemeConsumer } from '../components/ThemeProvider';
 import BaseLayout from '../layouts/BaseLayout';
@@ -13,6 +12,11 @@ import Col from '../components/Col';
 import Page from '../components/Page';
 
 export default function PostTemplate(props) {
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  });
+
   const post = props.data.allPodcastFeedItem.edges[0];
 
   return (
@@ -29,18 +33,19 @@ export default function PostTemplate(props) {
               <Row center="xs">
                 <Col xs md={8}>
                   <ReactAudioPlayer
+                    className="lozad"
                     style={{
                       width: '100%',
                       marginTop: 12,
                       marginBottom: 12,
                     }}
-                    src={post.node.enclosure.url}
+                    data-src={post.node.enclosure.url}
                     autoPlay={false}
                     controls
                   />
                   <Post
                     published={post.node.published}
-                    image={LogoPNG}
+                    image="logo.png"
                     title={post.node.title}
                     description={post.node.description}
                   />

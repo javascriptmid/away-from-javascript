@@ -1,8 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import LogoPNG from '../assets/logo.png';
-
 import BaseLayout from '../layouts/BaseLayout';
 import Post from '../components/Post';
 import Grid from '../components/Grid';
@@ -27,7 +25,7 @@ function IndexPage({ data }) {
                 <Post
                   ep={posts.length - index}
                   published={post.node.published}
-                  image={LogoPNG}
+                  image="logo.png"
                   title={post.node.title}
                   description={post.node.description}
                 />

@@ -1,5 +1,7 @@
 .Header {
   padding: 48px 0px;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .HeaderLogoGroup {
