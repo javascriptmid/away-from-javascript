@@ -7,6 +7,7 @@ export default function AudioPlayer({ src, className, ...props }) {
       {...props}
       className={`lozad ${className}`}
       data-src={src}
+      src={src}
       autoPlay={false}
       controls
     />
